@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Museo — Exposición</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal: #1E1C1A;
+    --ivory: #F2EEE6;
+    --gold: #B08D3E;
+    --gold-soft: #C9A96B;
+    --line: rgba(242,238,230,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body{
+    background: var(--charcoal);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+  }
+
+  /* ---------- 1. BANNER ---------- */
+  header.banner{
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .museo-nombre{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--gold-soft);
+    margin-bottom: 1rem;
+  }
+  /* EDITA AQUÍ: nombre del museo ↑ (línea de texto en el HTML, abajo) */
+
+  h1.exposicion-nombre{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    max-width: 20ch;
+    margin: 0 auto;
+  }
+  /* EDITA AQUÍ: nombre de la exposición ↑ */
+
+  /* ---------- Secciones generales ---------- */
+  section{
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .etiqueta{
+    font-size: 0.8rem;
+    color: var(--gold-soft);
+    margin-bottom: 0.75rem;
+  }
+
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---------- 2. VIDEO ---------- */
+  .video-envoltorio{
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* proporción 16:9 */
+    border: 1px solid var(--line);
+  }
+
+  .video-envoltorio iframe{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  /* ---------- 3. MAPA ---------- */
+  .mapa-envoltorio{
+    position: relative;
+    width: 100%;
+    padding-top: 65%;
+    border: 1px solid var(--line);
+  }
+
+  .mapa-envoltorio iframe{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+    filter: grayscale(0.3) contrast(1.05);
+  }
+
+  /* ---------- 4. BOTÓN AR ---------- */
+  .ar-seccion{
+    text-align: center;
+    padding-bottom: 6rem;
+  }
+
+  .ar-boton{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1.1rem 2.4rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease;
+  }
+
+  .ar-boton:hover{
+    background: var(--gold-soft);
+  }
+
+  .ar-descripcion{
+    max-width: 44ch;
+    margin: 0 auto 0.5rem;
+    color: rgba(242,238,230,0.75);
+    font-size: 0.95rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ar-boton{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 1. BANNER + NOMBRE DE LA EXPOSICIÓN -->
+  <header class="banner">
+    <div class="museo-nombre">Museo Nacional de San Carlos</div>
+    <h1 class="exposicion-nombre">Ida y Vuelta</h1>
+  </header>
+
+  <!-- 2. VIDEO DE YOUTUBE -->
+  <section>
+    <div class="etiqueta">Sobre la exposición</div>
+    <h2>Un vistazo antes de tu visita</h2>
+    <div class="video-envoltorio">
+      <!-- EDITA AQUÍ: reemplaza el ID del video (lo que va después de v= en la URL de YouTube) -->
+      <iframe src="https://www.youtube-nocookie.com/embed/-T5RF03tQYI" title="Video de la exposición" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- 3. MAPA INTERACTIVO -->
+  <section>
+    <div class="etiqueta">Trayecto</div>
+    <h2>Instrucciones del mapa</h2>
+    <div class="mapa-envoltorio">
+      <!-- EDITA AQUÍ: pega tu propio link "Insertar mapa" de Google Maps -->
+      <iframe
+        title="Mapa del museo"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- 4. BOTÓN A LA EXPERIENCIA AR -->
+  <section class="ar-seccion">
+    <div class="etiqueta">Realidad aumentada</div>
+    <h2>Escanea las pinturas en vivo</h2>
+    <p class="ar-descripcion">
+      Apunta tu cámara a cualquier pintura de la sala y descubre información adicional directamente sobre la obra.
+    </p>
+    <!-- Enlace relativo a la subcarpeta /ra, misma pestaña -->
+    <a href="/ra" class="ar-boton">Iniciar experiencia AR</a>
+  </section>
+
+</body>
+</html>
