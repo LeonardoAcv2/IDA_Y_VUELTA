@@ -1,103 +1,180 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ida y Vuelta</title>
-  <meta name="description" content="Exposición Ida y Vuelta: animación, mapa interactivo y experiencia de realidad aumentada.">
-  <style>
-    :root {
-      --bg: #111;
-      --fg: #f4f1ea;
-      --accent: #e0a33a;
-      --card: #1c1c1c;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.5;
-    }
-    section { padding: 2rem 1rem; max-width: 960px; margin: 0 auto; }
-    h2 { margin-bottom: 1rem; font-weight: normal; letter-spacing: .05em; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Museo — Exposición</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal: #1E1C1A;
+    --ivory: #F2EEE6;
+    --gold: #B08D3E;
+    --gold-soft: #C9A96B;
+    --line: rgba(242,238,230,0.18);
+  }
 
-    /* Banner del museo + nombre de la exposición */
-    .banner { text-align: center; padding-top: 0; }
-    .banner img { width: 100%; max-height: 260px; object-fit: cover; display: block; }
-    .banner h1 { margin-top: 1.5rem; font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: .08em; }
-    .banner p { opacity: .75; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Video de YouTube con vista previa (carga el iframe al hacer clic) */
-    .video { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; overflow: hidden; cursor: pointer; }
-    .video img, .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
-    .video button {
-      position: absolute; inset: 0; margin: auto; width: 72px; height: 72px;
-      border-radius: 50%; border: 0; background: var(--accent); color: #000; font-size: 1.8rem; cursor: pointer;
-    }
+  body{
+    background: var(--charcoal);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+  }
 
-    /* Mapa interactivo */
-    .mapa { height: 380px; background: var(--card); border-radius: 12px; overflow: hidden; }
-    .mapa iframe { width: 100%; height: 100%; border: 0; }
+  /* ---------- 1. BANNER ---------- */
+  header.banner{
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
 
-    /* Botón de realidad aumentada */
-    .ra { text-align: center; }
-    .ra a {
-      display: inline-block; padding: 1rem 2.5rem; border-radius: 999px;
-      background: var(--accent); color: #000; text-decoration: none;
-      font-size: 1.2rem; font-weight: bold;
-    }
-    .ra a:active { transform: scale(.97); }
+  .museo-san-carlos{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--gold-soft);
+    margin-bottom: 1rem;
+  }
 
-    footer { text-align: center; padding: 2rem 1rem; opacity: .6; font-size: .85rem; }
-  </style>
+  h1.exposicion-ida-y-vuelta{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    max-width: 20ch;
+    margin: 0 auto;
+  }
+
+  /* ---------- Secciones generales ---------- */
+  section{
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .etiqueta{
+    font-size: 0.8rem;
+    color: var(--gold-soft);
+    margin-bottom: 0.75rem;
+  }
+
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---------- 2. VIDEO ---------- */
+  .video-envoltorio{
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* proporción 16:9 */
+    border: 1px solid var(--line);
+  }
+
+  .video-envoltorio iframe{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  /* ---------- 3. MAPA ---------- */
+  .mapa-envoltorio{
+    position: relative;
+    width: 100%;
+    padding-top: 65%;
+    border: 1px solid var(--line);
+  }
+
+  .mapa-envoltorio iframe{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+    filter: grayscale(0.3) contrast(1.05);
+  }
+
+  /* ---------- 4. BOTÓN AR ---------- */
+  .ar-seccion{
+    text-align: center;
+    padding-bottom: 6rem;
+  }
+
+  .ar-boton{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1.1rem 2.4rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease;
+  }
+
+  .ar-boton:hover{
+    background: var(--gold-soft);
+  }
+
+  .ar-descripcion{
+    max-width: 44ch;
+    margin: 0 auto 0.5rem;
+    color: rgba(242,238,230,0.75);
+    font-size: 0.95rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ar-boton{ transition: none; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- 1. Banner del museo + nombre de la exposición -->
+  <!-- 1. BANNER + NOMBRE DE LA EXPOSICIÓN -->
   <header class="banner">
-    <img src="img/banner.jpg" alt="Banner del museo">
-    <h1>Ida y Vuelta</h1>
-    <p>Exposición · Nombre del museo</p>
+    <div class="museo-nombre">Museo Nacional de San Carlos</div>
+    <h1 class="exposicion-nombre">Ida y Vuelta</h1>
   </header>
 
-  <main>
-    <!-- 2. Video de YouTube con vista previa -->
-    <section>
-      <h2>Animación</h2>
-      <div class="video" id="video" role="button" aria-label="Reproducir video">
-        <img src="https://img.youtube.com/vi/-T5RF03tQYI/maxresdefault.jpg" alt="Vista previa de la animación">
-        <button type="button" aria-hidden="true">▶</button>
-      </div>
-    </section>
+  <!-- 2. VIDEO DE YOUTUBE -->
+  <section>
+    <div class="etiqueta">Sobre la exposición</div>
+    <h2>Un vistazo antes de tu visita</h2>
+    <div class="video-envoltorio">
+      <!-- Aqui es pa remplazar el video de youtube) -->
+      <iframe src="https://www.youtube.com/embed/-T5RF03tQYI" title="Video de la exposición" allowfullscreen></iframe>
+    </div>
+  </section>
 
-    <!-- 3. Mapa interactivo (reemplaza el src por tu mapa) -->
-    <section>
-      <h2>Mapa</h2>
-      <div class="mapa">
-        <iframe
-          src="https://www.google.com/maps?q=Teziutl%C3%A1n,+Puebla&output=embed"
-          loading="lazy"
-          title="Mapa de la exposición"></iframe>
-      </div>
-    </section>
+  <!-- 3. MAPA INTERACTIVO -->
+  <section>
+    <div class="etiqueta">Trayecto</div>
+    <h2>Instrucciones del mapa</h2>
+    <div class="mapa-envoltorio">
+      <!-- Aqui va a ir lo del mapa -->
+      <iframe
+        title="Mapa del museo"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 
-    <!-- 4. Botón hacia la experiencia de realidad aumentada (/ra) -->
-    <section class="ra">
-      <h2>Realidad aumentada</h2>
-      <a href="/ra/">Iniciar experiencia AR</a>
-    </section>
-  </main>
+  <!-- 4. BOTÓN A LA EXPERIENCIA AR -->
+  <section class="ar-seccion">
+    <div class="etiqueta">Realidad aumentada</div>
+    <h2>Escanea las pinturas en vivo</h2>
+    <p class="ar-descripcion">
+      Apunta tu cámara a cualquier pintura de la sala y descubre información adicional directamente sobre la obra.
+    </p>
+    <!-- Enlace relativo a la subcarpeta /ra, misma pestaña -->
+    <a href="/ra" class="ar-boton">Iniciar experiencia AR</a>
+  </section>
 
-  <footer>Ida y Vuelta</footer>
-
-  <script>
-    // Carga el iframe de YouTube solo al hacer clic en la vista previa
-    document.getElementById('video').addEventListener('click', function () {
-      this.innerHTML =
-        '<iframe src="https://www.youtube.com/embed/-T5RF03tQYI?autoplay=1" ' +
-        'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    }, { once: true });
-  </script>
 </body>
 </html>
