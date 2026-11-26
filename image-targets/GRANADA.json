@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "top": 0,
+    "left": 29,
+    "width": 1920,
+    "height": 2560,
+    "isRotated": true,
+    "originalWidth": 1978,
+    "originalHeight": 2560
+  },
+  "imagePath": "image-targets/GRANADA_luminance.png",
+  "metadata": null,
+  "name": "GRANADA",
+  "resources": {
+    "originalImage": "GRANADA_original.png",
+    "croppedImage": "GRANADA_cropped.png",
+    "thumbnailImage": "GRANADA_thumbnail.png",
+    "luminanceImage": "GRANADA_luminance.png"
+  },
+  "created": 1795667902190,
+  "updated": 1795667902190
+}
